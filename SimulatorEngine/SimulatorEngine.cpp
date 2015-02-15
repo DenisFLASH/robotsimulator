@@ -15,12 +15,23 @@ void showFixedObjects(PlayingArea* playingArea)
     }
 }
 
+void showMobileObjects(PlayingArea* playingArea)
+{
+    vector<MobileObject*> allMobileObjects = playingArea->getAllMobileObjects();
+    cout << "Showing " << allMobileObjects.size() << " mobile objects:" << endl;
+    for(unsigned int i = 0; i < allMobileObjects.size(); i++)
+    {
+        allMobileObjects[i]->showObjectInfo();
+    }
+}
+
 
 /* --- PUBLIC METHODS --- */
 SimulatorEngine::SimulatorEngine(PlayingArea* playingArea)
 {
     p_playingArea = playingArea;
     showFixedObjects(p_playingArea);
+    showMobileObjects(p_playingArea);
 
 /*
     Robot * robot1 = new Robot(Parameters::TEAM_A_MAIN_ROBOT_INIT_X, Parameters::TEAM_A_MAIN_ROBOT_INIT_Y,

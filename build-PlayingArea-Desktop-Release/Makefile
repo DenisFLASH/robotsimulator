@@ -44,10 +44,12 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../PlayingArea/PlayingArea.cpp \
 		../PlayingArea/FixedObject.cpp \
-		../PlayingArea/MobileObject.cpp 
+		../PlayingArea/MobileObject.cpp \
+		../PlayingArea/Robot.cpp 
 OBJECTS       = PlayingArea.o \
 		FixedObject.o \
-		MobileObject.o
+		MobileObject.o \
+		Robot.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/shell-unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -266,7 +268,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/PlayingArea1.0.0 || mkdir -p .tmp/PlayingArea1.0.0
-	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/PlayingArea1.0.0/ && $(COPY_FILE) --parents ../PlayingArea/PlayingArea.h ../PlayingArea/FixedObject.h ../PlayingArea/MobileObject.h ../PlayingArea/Parameters.h .tmp/PlayingArea1.0.0/ && $(COPY_FILE) --parents ../PlayingArea/PlayingArea.cpp ../PlayingArea/FixedObject.cpp ../PlayingArea/MobileObject.cpp .tmp/PlayingArea1.0.0/ && (cd `dirname .tmp/PlayingArea1.0.0` && $(TAR) PlayingArea1.0.0.tar PlayingArea1.0.0 && $(COMPRESS) PlayingArea1.0.0.tar) && $(MOVE) `dirname .tmp/PlayingArea1.0.0`/PlayingArea1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/PlayingArea1.0.0
+	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/PlayingArea1.0.0/ && $(COPY_FILE) --parents ../PlayingArea/PlayingArea.h ../PlayingArea/FixedObject.h ../PlayingArea/MobileObject.h ../PlayingArea/Parameters.h ../PlayingArea/Robot.h .tmp/PlayingArea1.0.0/ && $(COPY_FILE) --parents ../PlayingArea/PlayingArea.cpp ../PlayingArea/FixedObject.cpp ../PlayingArea/MobileObject.cpp ../PlayingArea/Robot.cpp .tmp/PlayingArea1.0.0/ && (cd `dirname .tmp/PlayingArea1.0.0` && $(TAR) PlayingArea1.0.0.tar PlayingArea1.0.0 && $(COMPRESS) PlayingArea1.0.0.tar) && $(MOVE) `dirname .tmp/PlayingArea1.0.0`/PlayingArea1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/PlayingArea1.0.0
 
 
 clean:compiler_clean 
@@ -306,7 +308,8 @@ compiler_clean:
 PlayingArea.o: ../PlayingArea/PlayingArea.cpp ../PlayingArea/PlayingArea.h \
 		../PlayingArea/FixedObject.h \
 		../PlayingArea/MobileObject.h \
-		../PlayingArea/Parameters.h
+		../PlayingArea/Parameters.h \
+		../PlayingArea/Robot.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o PlayingArea.o ../PlayingArea/PlayingArea.cpp
 
 FixedObject.o: ../PlayingArea/FixedObject.cpp ../PlayingArea/FixedObject.h
@@ -314,6 +317,10 @@ FixedObject.o: ../PlayingArea/FixedObject.cpp ../PlayingArea/FixedObject.h
 
 MobileObject.o: ../PlayingArea/MobileObject.cpp ../PlayingArea/MobileObject.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MobileObject.o ../PlayingArea/MobileObject.cpp
+
+Robot.o: ../PlayingArea/Robot.cpp ../PlayingArea/Robot.h \
+		../PlayingArea/MobileObject.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Robot.o ../PlayingArea/Robot.cpp
 
 ####### Install
 

@@ -12,12 +12,14 @@ CONFIG += staticlib
 
 SOURCES += PlayingArea.cpp \
     FixedObject.cpp \
-    MobileObject.cpp
+    MobileObject.cpp \
+    Robot.cpp
 
 HEADERS += PlayingArea.h \
     FixedObject.h \
     MobileObject.h \
-    Parameters.h
+    Parameters.h \
+    Robot.h
 
 unix {
     target.path = /usr/lib
