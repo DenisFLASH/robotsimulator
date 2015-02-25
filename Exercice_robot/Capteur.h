@@ -17,7 +17,7 @@ public:
     bool getPresenceSE();
     bool getPresenceSO();
 
-
+/*
 private:
     uint16_t meas_NE, meas_NO, meas_SO, meas_SE;
     DigitalOut* ir_NE;
@@ -29,7 +29,6 @@ private:
     AnalogIn* irval_SO;
     AnalogIn* irval_SE;
 
-private:
     void startSendingIR();
     void stopSendingIR();
 
@@ -46,7 +45,7 @@ private:
     uint16_t readIrval_NE();
     uint16_t readIrval_NO();
     uint16_t readIrval_SE();
-    uint16_t readIrval_SO();
+    uint16_t readIrval_SO();*/
 };
 
 

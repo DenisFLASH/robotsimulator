@@ -1,69 +1,74 @@
 ﻿#include "StrategieGlobale.h"
 #include "Deplacement.h"
-#include "Pince.h"
-#include "Capteur.h"
+//#include "Pince.h"
+//#include "Capteur.h"
+#include <iostream>
+using namespace std;
 
 
 StrategieGlobale::StrategieGlobale()
 {
-    Deplacement* deplacement = new Deplacement();
+    /*Deplacement* deplacement = new Deplacement();
     Pince* pince = new Pince();
     Capteur* capteur = new Capteur();
 
     bindServiceActionMoteur(deplacement);
     bindServiceActionBras(pince);
-    bindServiceCapteur(capteur);
+    bindServiceCapteur(capteur);*/
+
+    cout << "StrategieGlobale created..." << endl;
 }
 
+StrategieGlobale::~StrategieGlobale()
+{
+    cout << "...StrategieGlobale destroyed." << endl;
+}
 
 void StrategieGlobale::init()
 {
-    action_pince = false;
+
 }
 
 
 void StrategieGlobale::step()
 {
-    if (action_pince)
-    {
-        p_actionBras->grapper();
-    }
 
+
+    // TOUJOURS AVANCER
+    p_actionMoteur->avancer();
+
+
+    /*
     p_capteur->refreshAllDetectors();
-
     p_actionMoteur->arreterMoteur();
-    p_actionBras->stopGrapper();
-    action_pince=false;
 
-    /* Avancer */
+    // Avancer
     if (p_capteur->getPresenceNE() && p_capteur->getPresenceNO())
     {
       p_actionMoteur->avancer();
-      action_pince = true;
       return;
     }
 
-    /* Reculer */
+    // Reculer
     if (p_capteur->getPresenceSE() || p_capteur->getPresenceSO())
     {
       p_actionMoteur->reculer();
-      action_pince = true;
       return;
     }
 
-    /* Tourner à gauche */
+    // Tourner à gauche
     if (p_capteur->getPresenceNO())
     {
       p_actionMoteur->tournerAGauche();
       return;
     }
 
-    /* Tourner à droite */
+    // Tourner à droite
     if (p_capteur->getPresenceNE())
     {
       p_actionMoteur->tournerADroite();
       return;
-    }
+    }*/
 }
 
 
@@ -73,9 +78,9 @@ void StrategieGlobale::bindServiceActionMoteur(ServiceActionMoteur* service)
 }
 
 
-void StrategieGlobale::bindServiceActionBras(ServiceActionBras* service)
+void StrategieGlobale::bindServiceActionPince(ServiceActionPince* service)
 {
-    p_actionBras = service;
+    p_actionPince = service;
 }
 
 

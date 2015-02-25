@@ -1,7 +1,7 @@
 #ifndef STON_H
 #define STON_H
 
-#include "mbed.h" 
+//#include "mbed.h"
 
 //---SERVICES---//
 class ServiceCapteur
@@ -36,16 +36,16 @@ public:
 };
 
 
-class ServiceActionBras
+class ServiceActionPince
 {
 public:
     virtual void grapper()=0;
     virtual void stopGrapper()=0;
 };
-class ServiceRequisActionBras
+class ServiceRequisActionPince
 {
 public:
-    virtual void bindServiceActionBras(ServiceActionBras* service)=0;
+    virtual void bindServiceActionPince(ServiceActionPince* service)=0;
 };
 
 
@@ -60,15 +60,15 @@ public:
     virtual void bindServiceInitialisation(ServiceInitialisation* service)=0;
 };
 
-class ServiceActionPasAPas
+class ServicePasAPas
 {
 public:
     virtual void step()=0;
 };
-class ServiceRequisActionPasAPas
+class ServiceRequisPasAPas
 {
 public:
-    virtual void bindServiceActionPasAPas(ServiceActionPasAPas* service)=0;
+    virtual void bindServicePasAPas(ServicePasAPas* service)=0;
 };
 
 

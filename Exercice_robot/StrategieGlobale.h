@@ -6,25 +6,24 @@
 
 //---COMPOSANT STRATEGIE GLOBALE---//
 class StrategieGlobale: public ServiceRequisActionMoteur,
-                        public ServiceRequisActionBras,
+                        public ServiceRequisActionPince,
                         public ServiceRequisCapteur,
                         public ServiceInitialisation,
-                        public ServiceActionPasAPas
+                        public ServicePasAPas
 
 {
 private:
     ServiceActionMoteur* p_actionMoteur;
-    ServiceActionBras* p_actionBras;
+    ServiceActionPince* p_actionPince;
     ServiceCapteur* p_capteur;
-
-    bool action_pince;
 
 public:
     StrategieGlobale();
+    virtual ~StrategieGlobale();
     void init();
     void step();
     void bindServiceActionMoteur(ServiceActionMoteur* service);
-    void bindServiceActionBras(ServiceActionBras* service);
+    void bindServiceActionPince(ServiceActionPince* service);
     void bindServiceCapteur(ServiceCapteur* service);
 };
 

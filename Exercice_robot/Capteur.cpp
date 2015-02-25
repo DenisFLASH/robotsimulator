@@ -1,7 +1,5 @@
 #include "Capteur.h"
-#include "mbed.h" 
-
-
+//#include "mbed.h"
 
 #define VALMAGIC 13750
 
@@ -14,6 +12,7 @@
 
 Capteur::Capteur()
 {
+    /*
     ir_NE = new DigitalOut(PA_13);
     ir_NO = new DigitalOut(PA_14);
     ir_SO = new DigitalOut(PA_15);
@@ -22,11 +21,13 @@ Capteur::Capteur()
     irval_NO = new AnalogIn(PB_1);
     irval_SO = new AnalogIn(D11);
     irval_SE = new AnalogIn(PC_5);
+    */
 }
 
 /* Refreshes the values of measurements of ALL 4 DETECTORS. Called every step. */
 void Capteur::refreshAllDetectors()
 {
+    /*
     startSendingIR();
     wait(0.05);
     setMeas_NE(readIrval_NE());
@@ -40,33 +41,38 @@ void Capteur::refreshAllDetectors()
     setMeas_NO(getMeas_NO() - readIrval_NO());
     setMeas_SE(getMeas_SE() - readIrval_SE());
     setMeas_SO(getMeas_SO() - readIrval_SO());
+    */
 }
 
 /* Returns true if an object is present ahead of a detector.*/
 
 bool Capteur::getPresenceNE()
 {
-    return meas_NE > VALMAGIC;
+    return false;
+    /*return meas_NE > VALMAGIC;*/
 }
 bool Capteur::getPresenceNO()
 {
-    return meas_NO > VALMAGIC;
+    return false;
+    /*return meas_NO > VALMAGIC;*/
 }
 bool Capteur::getPresenceSE()
 {
-    return meas_SE > VALMAGIC;
+    return false;
+    /*return meas_SE > VALMAGIC;*/
 }
 bool Capteur::getPresenceSO()
 {
-    return meas_SO > VALMAGIC;
+    return false;
+    /*return meas_SO > VALMAGIC;*/
 }
 
 
 
 //  PRIVATE METHODS
 
-/* Getters and setters */
-
+// Getters and setters
+/*
 uint16_t Capteur::getMeas_NE() const
 {
     return meas_NE;
@@ -103,7 +109,7 @@ void Capteur::setMeas_SO(const uint16_t &value)
 }
 
 
-/* Read infrared detector values.*/
+// Read infrared detector values.
 uint16_t Capteur::readIrval_NE()
 {
     return irval_NE->read_u16();
@@ -122,7 +128,7 @@ uint16_t Capteur::readIrval_SO()
 }
 
 
-/* Start sending infrared signals from all four emittors. */
+// Start sending infrared signals from all four emittors.
 void Capteur::startSendingIR()
 {
     *ir_NE = 1;
@@ -131,7 +137,7 @@ void Capteur::startSendingIR()
     *ir_SE = 1;
 }
 
-/* Stop sending infrared signals from all four emittors. */
+// Stop sending infrared signals from all four emittors.
 void Capteur::stopSendingIR()
 {
     *ir_NE = 0;
@@ -139,3 +145,4 @@ void Capteur::stopSendingIR()
     *ir_SO = 0;
     *ir_SE = 0;
 }
+*/

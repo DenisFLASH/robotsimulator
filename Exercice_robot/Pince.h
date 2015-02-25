@@ -1,17 +1,17 @@
 #ifndef PINCE_H
 #define PINCE_H
 
-#include "mbed.h"
+//#include "mbed.h"
 #include "ston.h"
 
 
 
 //---COMPOSANT PINCE---//
-class Pince: public ServiceActionBras
+class Pince: public ServiceActionPince
 {
 private:
-    PwmOut* pwmpince;
-    DigitalOut* dirpince;
+    /*PwmOut* pwmpince;
+    DigitalOut* dirpince;*/
 
     int pince;
 

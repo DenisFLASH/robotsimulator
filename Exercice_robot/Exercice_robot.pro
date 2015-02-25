@@ -6,15 +6,24 @@ CONFIG -= qt
 SOURCES += main.cpp \
     Cerveau.cpp \
     StrategieGlobale.cpp \
-    Capteur.cpp \
     Deplacement.cpp \
-    Pince.cpp
+    Pince.cpp \
+    Robot.cpp \
+    Capteur.cpp \
+    PlayingArea.cpp \
+    FixedObject.cpp \
+    SimulatorEngine.cpp
 
 HEADERS += \
-    Capteur.h \
     Deplacement.h \
     StrategieGlobale.h \
     ston.h \
     Pince.h \
-    Cerveau.h
+    Cerveau.h \
+    Robot.h \
+    Capteur.h \
+    PlayingArea.h \
+    FixedObject.h \
+    Parameters.h \
+    SimulatorEngine.h
 

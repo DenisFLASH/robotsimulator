@@ -9,12 +9,12 @@
 class Deplacement: public ServiceActionMoteur
 {
 private:
-    PwmOut* pwmgauche;
+    /*PwmOut* pwmgauche;
     DigitalOut* dirgauche0;
     DigitalOut* dirgauche1;
     PwmOut* pwmdroite;
     DigitalOut* dirdroite0;
-    DigitalOut* dirdroite1;
+    DigitalOut* dirdroite1;*/
 
 
 public:

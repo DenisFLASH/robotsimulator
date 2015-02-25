@@ -4,15 +4,15 @@
 #include "ston.h"
 
 class Cerveau: public ServiceRequisInitialisation,
-               public ServiceRequisActionPasAPas
+               public ServiceRequisPasAPas
 {
 private:
     ServiceInitialisation* p_serviceInit;
-    ServiceActionPasAPas* p_serviceActionPasAPas;
+    ServicePasAPas* p_servicePasAPas;
 public:
     Cerveau();
     void bindServiceInitialisation(ServiceInitialisation* serviceInitialisation);
-    void bindServiceActionPasAPas(ServiceActionPasAPas* servicePasAPas);
+    void bindServicePasAPas(ServicePasAPas* servicePasAPas);
 };
 
 

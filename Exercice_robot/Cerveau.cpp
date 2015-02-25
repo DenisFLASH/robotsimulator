@@ -6,11 +6,11 @@ Cerveau::Cerveau()
 {
     StrategieGlobale* strategieGlobale = new StrategieGlobale();
     bindServiceInitialisation(strategieGlobale);
-    bindServiceActionPasAPas(strategieGlobale);
+    bindServicePasAPas(strategieGlobale);
 
     p_serviceInit->init();
     while(1) {
-        p_serviceActionPasAPas->step();
+        p_servicePasAPas->step();
     }
 }
 
@@ -19,7 +19,7 @@ void Cerveau::bindServiceInitialisation(ServiceInitialisation* serviceInitialisa
     p_serviceInit = serviceInitialisation;
 }
 
-void Cerveau::bindServiceActionPasAPas(ServiceActionPasAPas* servicePasAPas)
+void Cerveau::bindServicePasAPas(ServicePasAPas* servicePasAPas)
 {
-    p_serviceActionPasAPas = servicePasAPas;
+    p_servicePasAPas = servicePasAPas;
 }
