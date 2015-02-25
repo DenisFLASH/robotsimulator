@@ -10,6 +10,8 @@ private:
 
 public:
     SimulatorEngine(PlayingArea* playingArea);
+
+    void step();
 };
 
 #endif // SIMULATORENGINE_H

@@ -56,3 +56,13 @@ SimulatorEngine::SimulatorEngine(PlayingArea* playingArea)
     */
 
 }
+
+void SimulatorEngine::step()
+{
+    vector<MobileObject*> allMobileObjects = p_playingArea->getAllMobileObjects();
+
+    for ( int i = 0; i < allMobileObjects.size(); i++ )
+    {
+
+    }
+}

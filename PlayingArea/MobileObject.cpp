@@ -55,3 +55,8 @@ void MobileObject::showObjectInfo()
             ", speed = " << m_speed << ", acceleration = " << m_acceleration << ", heading = " << m_heading << endl;
 }
 
+void MobileObject::refreshCoordinates()
+{
+
+}
+

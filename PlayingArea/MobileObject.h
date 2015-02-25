@@ -25,6 +25,7 @@ public:
     double getAcceleration();
     double getHeading();
     void showObjectInfo();
+    void refreshCoordinates();
 };
 
 #endif // MOBILEOBJECT_H
