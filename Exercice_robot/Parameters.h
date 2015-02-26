@@ -13,7 +13,8 @@ namespace Parameters
               TABLE_HEIGHT = 2000,
               TEAM_A_MAIN_ROBOT_INIT_X = 250,
               TEAM_A_MAIN_ROBOT_INIT_Y = 1000,
-              TEAM_A_MAIN_ROBOT_RADIUS = 150;
+              TEAM_A_MAIN_ROBOT_LENGTH = 250,
+              TEAM_A_MAIN_ROBOT_WIDTH = 200;
 
     const double TEAM_A_MAIN_ROBOT_SPEED = 50.0 * (STEP_DURATION_MICROSECONDS / 1000000); // 50 mm per 1 sec
 

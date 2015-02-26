@@ -34,9 +34,9 @@ void SimulatorEngine::run()
     theOnlyRobot->init();
     while(1)
     {
+        theOnlyRobot->displayInfo();
         theOnlyRobot->step();
         refreshCoordinates();
-        theOnlyRobot->displayInfo();
         usleep(STEP_DURATION_MICROSECONDS);
     }
 }

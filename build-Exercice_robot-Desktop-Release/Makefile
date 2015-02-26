@@ -54,7 +54,8 @@ SOURCES       = ../Exercice_robot/main.cpp \
 		../Exercice_robot/Capteur.cpp \
 		../Exercice_robot/PlayingArea.cpp \
 		../Exercice_robot/FixedObject.cpp \
-		../Exercice_robot/SimulatorEngine.cpp 
+		../Exercice_robot/SimulatorEngine.cpp \
+		../Exercice_robot/MathUtils.cpp 
 OBJECTS       = main.o \
 		Cerveau.o \
 		StrategieGlobale.o \
@@ -64,7 +65,8 @@ OBJECTS       = main.o \
 		Capteur.o \
 		PlayingArea.o \
 		FixedObject.o \
-		SimulatorEngine.o
+		SimulatorEngine.o \
+		MathUtils.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/shell-unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -297,7 +299,8 @@ main.o: ../Exercice_robot/main.cpp ../Exercice_robot/PlayingArea.h \
 		../Exercice_robot/Robot.h \
 		../Exercice_robot/ston.h \
 		../Exercice_robot/Parameters.h \
-		../Exercice_robot/StrategieGlobale.h
+		../Exercice_robot/StrategieGlobale.h \
+		../Exercice_robot/SimulatorEngine.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Exercice_robot/main.cpp
 
 Cerveau.o: ../Exercice_robot/Cerveau.cpp ../Exercice_robot/Cerveau.h \
@@ -338,8 +341,12 @@ SimulatorEngine.o: ../Exercice_robot/SimulatorEngine.cpp ../Exercice_robot/Simul
 		../Exercice_robot/PlayingArea.h \
 		../Exercice_robot/FixedObject.h \
 		../Exercice_robot/Robot.h \
-		../Exercice_robot/ston.h
+		../Exercice_robot/ston.h \
+		../Exercice_robot/Parameters.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SimulatorEngine.o ../Exercice_robot/SimulatorEngine.cpp
+
+MathUtils.o: ../Exercice_robot/MathUtils.cpp ../Exercice_robot/MathUtils.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MathUtils.o ../Exercice_robot/MathUtils.cpp
 
 ####### Install
 

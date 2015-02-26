@@ -12,7 +12,8 @@ SOURCES += main.cpp \
     Capteur.cpp \
     PlayingArea.cpp \
     FixedObject.cpp \
-    SimulatorEngine.cpp
+    SimulatorEngine.cpp \
+    MathUtils.cpp
 
 HEADERS += \
     Deplacement.h \
@@ -25,5 +26,6 @@ HEADERS += \
     PlayingArea.h \
     FixedObject.h \
     Parameters.h \
-    SimulatorEngine.h
+    SimulatorEngine.h \
+    MathUtils.h
 

@@ -2,7 +2,8 @@
 #define ROBOT_H
 
 #include "ston.h"
-
+#include <string>
+using namespace std;
 
 class Robot: public ServiceActionMoteur,
              //public ServiceActionPince,
@@ -13,17 +14,21 @@ class Robot: public ServiceActionMoteur,
 private:
     int m_x,
         m_y,
-        m_radius;
+        m_length,
+        m_width;
     double m_speed,
            m_acceleration,
            m_heading,
            m_stepTurnAngle;
+    double distanceToCorner, // r
+           angleToCorner;    // beta
+    string m_name;
 
     ServiceInitialisation* p_serviceInit;
     ServicePasAPas* p_servicePasAPas;
 
 public:
-    Robot(int x, int y, int radius, double heading);
+    Robot(string name, int x, int y, int length, int width, double heading);
     virtual ~Robot();
     void bindServiceInitialisation(ServiceInitialisation* serviceInitialisation);
     void bindServicePasAPas(ServicePasAPas* servicePasAPas);
@@ -34,12 +39,24 @@ public:
     void setX(int x);
     int getY();
     void setY(int y);
-    int getRadius();
+    int getLength();
+    int getWidth();
     double getSpeed();
     void setSpeed(double speed);
     double getAcceleration();
     double getHeading();
+    string getName();
     void displayInfo();
+
+    double getXNW();
+    double getYNW();
+    double getXNE();
+    double getYNE();
+    double getXSW();
+    double getYSW();
+    double getXSE();
+    double getYSE();
+
 
     // ServiceActionMoteur
     void avancer(); // move()

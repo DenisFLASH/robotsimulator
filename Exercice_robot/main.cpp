@@ -9,7 +9,8 @@ using namespace Parameters;
 
 int main()
 {
-    Robot* ryad = new Robot(TEAM_A_MAIN_ROBOT_INIT_X, TEAM_A_MAIN_ROBOT_INIT_Y, TEAM_A_MAIN_ROBOT_RADIUS, 0.3);
+    Robot* ryad = new Robot("Ryad", TEAM_A_MAIN_ROBOT_INIT_X, TEAM_A_MAIN_ROBOT_INIT_Y,
+                            TEAM_A_MAIN_ROBOT_LENGTH, TEAM_A_MAIN_ROBOT_WIDTH, PI / 4);
     StrategieGlobale* brain = new StrategieGlobale();
     ryad->bindServiceInitialisation(brain);
     ryad->bindServicePasAPas(brain);
