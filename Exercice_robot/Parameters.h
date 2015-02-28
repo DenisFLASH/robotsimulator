@@ -16,8 +16,10 @@ namespace Parameters
               TEAM_A_MAIN_ROBOT_LENGTH = 250,
               TEAM_A_MAIN_ROBOT_WIDTH = 200;
 
-    const double TEAM_A_MAIN_ROBOT_SPEED = 50.0 * (STEP_DURATION_MICROSECONDS / 1000000); // 50 mm per 1 sec
+    const int SIMULATOR_SCREEN_WIDTH = 900,
+              SIMULATOR_SCREEN_HEIGHT = 600;
 
+    const double ROBOT_MAX_SPEED = 50.0 * (STEP_DURATION_MICROSECONDS / 1000000); // 50 mm per 1 sec
 
 
     enum Direction { LEFT, RIGHT };

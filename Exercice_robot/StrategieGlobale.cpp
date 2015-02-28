@@ -35,7 +35,7 @@ void StrategieGlobale::step()
 
 
     // TOUJOURS AVANCER
-    p_actionMoteur->avancer();
+    p_actionMoteur->avancer(1.0); // puissance 1.0 = 100% de la speed_max
 
 
     /*

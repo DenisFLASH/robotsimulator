@@ -1,10 +1,12 @@
 #include "Robot.h"
 #include "MathUtils.h"
+#include "Parameters.h"
 #include <iostream>
 #include <string>
 #include <cmath>
 using namespace std;
 using namespace MathUtils;
+using namespace Parameters;
 
 #define PI 3.14159265358979323846
 
@@ -47,6 +49,7 @@ void Robot::step()
 {
     p_servicePasAPas->step();
 }
+
 
 int Robot::getX()
 {
@@ -146,14 +149,14 @@ double Robot::getYSE()
 // ==== IMPLEMENTING SERVICES ====
 
 // ServiceActionMoteur
-void Robot::avancer()
+void Robot::avancer(double puissance)
 {
-    m_speed = 5.0;
+    m_speed = puissance * ROBOT_MAX_SPEED;
 }
 
-void Robot::reculer()
+void Robot::reculer(double puissance)
 {
-    m_speed = -5.0;
+    m_speed = - puissance * ROBOT_MAX_SPEED;
 }
 
 void Robot::arreterMoteur()

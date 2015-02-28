@@ -23,8 +23,8 @@ public:
 class ServiceActionMoteur
 {
 public:
-    virtual void avancer()=0;
-    virtual void reculer()=0;
+    virtual void avancer(double puissance)=0;
+    virtual void reculer(double puissance)=0;
     virtual void arreterMoteur()=0;
     virtual void tournerAGauche()=0;
     virtual void tournerADroite()=0;

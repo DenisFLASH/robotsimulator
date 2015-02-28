@@ -35,6 +35,7 @@ public:
     void init();
     void step();
 
+public:
     int getX();
     void setX(int x);
     int getY();
@@ -57,10 +58,9 @@ public:
     double getXSE();
     double getYSE();
 
-
     // ServiceActionMoteur
-    void avancer(); // move()
-    void reculer(); // moveBack()
+    void avancer(double puissance); // move()
+    void reculer(double puissance); // moveBack()
     void arreterMoteur();
     void tournerAGauche(); // stepTurnLeft()
     void tournerADroite(); // stepTurnRight()

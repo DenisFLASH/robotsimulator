@@ -2,9 +2,9 @@
 #define SIMULATORENGINE_H
 
 #include "PlayingArea.h"
+#include <QtCore>
 
-
-class SimulatorEngine
+class SimulatorEngine : public QThread
 {
 private:
     PlayingArea* p_playingArea;
@@ -17,7 +17,8 @@ public:
     void run();
 
 private:
-    void refreshCoordinates();
+    void refreshRobotCoordinates(Robot* robot);
+    bool isRobotOutsideTable(Robot* robot);
 };
 
 

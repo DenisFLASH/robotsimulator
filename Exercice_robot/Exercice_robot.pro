@@ -1,7 +1,12 @@
 TEMPLATE = app
-CONFIG += console
-CONFIG -= app_bundle
-CONFIG -= qt
+#CONFIG += console
+#CONFIG -= app_bundle
+#CONFIG -= qt
+
+QT += core gui
+
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
 
 SOURCES += main.cpp \
     Cerveau.cpp \
@@ -13,7 +18,9 @@ SOURCES += main.cpp \
     PlayingArea.cpp \
     FixedObject.cpp \
     SimulatorEngine.cpp \
-    MathUtils.cpp
+    MathUtils.cpp \
+    Scene.cpp \
+    SupportGUI.cpp
 
 HEADERS += \
     Deplacement.h \
@@ -27,5 +34,7 @@ HEADERS += \
     FixedObject.h \
     Parameters.h \
     SimulatorEngine.h \
-    MathUtils.h
+    MathUtils.h \
+    Scene.h \
+    SupportGUI.h
 
