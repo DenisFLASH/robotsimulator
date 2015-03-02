@@ -16,7 +16,7 @@ int main(int argc, char** argv)
 
 
     Robot* ryad = new Robot("Ryad", TEAM_A_MAIN_ROBOT_INIT_X, TEAM_A_MAIN_ROBOT_INIT_Y,
-                            TEAM_A_MAIN_ROBOT_LENGTH, TEAM_A_MAIN_ROBOT_WIDTH, 0.75 * PI);
+                            TEAM_A_MAIN_ROBOT_LENGTH, TEAM_A_MAIN_ROBOT_WIDTH, NORTH);
     StrategieGlobale* brain = new StrategieGlobale();
     ryad->bindServiceInitialisation(brain);
     ryad->bindServicePasAPas(brain);
@@ -30,16 +30,16 @@ int main(int argc, char** argv)
     // 2 THREADS.
     SimulatorEngine engine;
     engine.bindPlayingArea(area);
-    //SupportGUI supportGUI;
-    //supportGUI.bindPlayingArea(area);
+    SupportGUI supportGUI;
+    supportGUI.bindPlayingArea(area);
 
 
     // "start" runs the threads.
     // "wait" makes the main thread wait until 'engine' and 'supportGUI' threads finish their execution.
     engine.start();
-    //supportGUI.start();
+    supportGUI.start();
     engine.wait();
-    //supportGUI.wait();
+    supportGUI.wait();
 
 
     delete area;

@@ -1,11 +1,13 @@
 #ifndef ROBOT_H
 #define ROBOT_H
 
+#include <QGraphicsRectItem>
 #include "ston.h"
 #include <string>
 using namespace std;
 
-class Robot: public ServiceActionMoteur,
+class Robot: public QGraphicsItem,
+             public ServiceActionMoteur,
              //public ServiceActionPince,
              //public ServiceCapteur,
              public ServiceRequisInitialisation,
@@ -16,6 +18,7 @@ private:
         m_y,
         m_length,
         m_width;
+    double m_XNW, m_YNW, m_XNE, m_YNE, m_XSW, m_YSW, m_XSE, m_YSE;
     double m_speed,
            m_acceleration,
            m_heading,
@@ -30,12 +33,24 @@ private:
 public:
     Robot(string name, int x, int y, int length, int width, double heading);
     virtual ~Robot();
+
+    // Methods of QGraphicsItem ////////////////////////////////////////////////////////////
+    void advance(int phase);
+    QRectF boundingRect() const;
+    QPainterPath shape() const;
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+    // /////////////////////////////////////////////////////////////////////////////////////
+
+
+    // Binding with StrategieGlobale ////////////////////////////////////////////
     void bindServiceInitialisation(ServiceInitialisation* serviceInitialisation);
     void bindServicePasAPas(ServicePasAPas* servicePasAPas);
     void init();
     void step();
+    // /////////////////////////////////////////////////////////////////////////
 
-public:
+
+    // Setters, getters //////////
     int getX();
     void setX(int x);
     int getY();
@@ -46,9 +61,7 @@ public:
     void setSpeed(double speed);
     double getAcceleration();
     double getHeading();
-    string getName();
-    void displayInfo();
-
+    string getName();    
     double getXNW();
     double getYNW();
     double getXNE();
@@ -57,6 +70,9 @@ public:
     double getYSW();
     double getXSE();
     double getYSE();
+    void updateCornersCoordinates();
+    void displayInfo();
+    // /////////////////////////////
 
     // ServiceActionMoteur
     void avancer(double puissance); // move()
@@ -69,7 +85,7 @@ public:
     // todo
 
     // ServiceCapteur
-    // todo
+    // todo (!!!) move to SimulatorEngine
 };
 
 
