@@ -3,9 +3,10 @@
 #include "PlayingArea.h"
 #include "Robot.h"
 #include "Parameters.h"
+#include "Scene.h"
 #include "StrategieGlobale.h"
 #include "SimulatorEngine.h"
-#include "SupportGUI.h"
+#include <QGraphicsView>
 #include <iostream>
 using namespace Parameters;
 
@@ -27,25 +28,44 @@ int main(int argc, char** argv)
     PlayingArea* area = new PlayingArea();
     area->setTheOnlyRobot(ryad);
 
-    // 2 THREADS.
-    SimulatorEngine engine;
-    engine.bindPlayingArea(area);
-    SupportGUI supportGUI;
-    supportGUI.bindPlayingArea(area);
+    SimulatorEngine* engine = new SimulatorEngine();
+    engine->bindPlayingArea(area);
+    engine->getPlayingArea()->getTheOnlyRobot()->init();
+
+    QTimer timer;
+    QObject::connect(&timer, SIGNAL(timeout()), engine, SLOT(step()));
+    timer.start(1000);
 
 
-    // "start" runs the threads.
+    // GUI
+    Scene* scene = new Scene();
+    scene->bindPlayingArea(area);
+    scene->initDrawFixedObjects();
+    scene->initDrawRobot();
+    QGraphicsView view(scene);
+    QTimer ihmTimer;
+    QObject::connect(&ihmTimer, SIGNAL(timeout()), scene, SLOT(redrawScene()));
+    view.show();
+    ihmTimer.start(100);
+
+
+
+    return app.exec();
+
+
+
+
+
+    /*// "start" runs the threads.
     // "wait" makes the main thread wait until 'engine' and 'supportGUI' threads finish their execution.
     engine.start();
     supportGUI.start();
     engine.wait();
-    supportGUI.wait();
+    supportGUI.wait();*/
 
-
+    /*delete engine;
     delete area;
     delete brain;
-    delete ryad;
-
-    return app.exec();
+    delete ryad;*/
 }
 

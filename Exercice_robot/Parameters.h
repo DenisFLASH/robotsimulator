@@ -6,7 +6,6 @@
 
 namespace Parameters
 {
-
     const unsigned int STEP_DURATION_MICROSECONDS = 1.0 * MILLION; // 0.1 sec
     // TO DO move it to SimulatorEngine project
 

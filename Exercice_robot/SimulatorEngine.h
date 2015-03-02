@@ -2,19 +2,26 @@
 #define SIMULATORENGINE_H
 
 #include "PlayingArea.h"
-#include <QtCore>
+#include <QObject>
 
-class SimulatorEngine : public QThread
+class SimulatorEngine : public QObject
 {
-private:
-    PlayingArea* p_playingArea;
+    Q_OBJECT
 
 public:
     SimulatorEngine();
     ~SimulatorEngine();
     void bindPlayingArea(PlayingArea* area);
     PlayingArea* getPlayingArea();
-    void run();
+    //void run();
+
+public slots:
+    void step();
+
+
+private:
+    PlayingArea* p_playingArea;
+    QTimer* p_simulatorStepTimer;
 
 private:
     void refreshRobotCoordinates(Robot* robot);

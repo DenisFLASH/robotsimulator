@@ -19,8 +19,7 @@ SOURCES += main.cpp \
     FixedObject.cpp \
     SimulatorEngine.cpp \
     MathUtils.cpp \
-    Scene.cpp \
-    SupportGUI.cpp
+    Scene.cpp
 
 HEADERS += \
     Deplacement.h \
@@ -35,6 +34,5 @@ HEADERS += \
     Parameters.h \
     SimulatorEngine.h \
     MathUtils.h \
-    Scene.h \
-    SupportGUI.h
+    Scene.h
 

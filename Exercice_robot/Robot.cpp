@@ -70,10 +70,12 @@ void Robot::bindServicePasAPas(ServicePasAPas* servicePasAPas)
 }
 void Robot::init()
 {
+    cout << "robot INIT()" << endl;
     p_serviceInit->init();
 }
 void Robot::step()
 {
+    cout << "robot STEP()" << endl;
     p_servicePasAPas->step();
 }
 // ///////////////////////////////////////////////

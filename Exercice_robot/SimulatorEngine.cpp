@@ -26,18 +26,12 @@ PlayingArea* SimulatorEngine::getPlayingArea()
     return p_playingArea;
 }
 
-void SimulatorEngine::run()
+void SimulatorEngine::step()
 {
-    cout << "\n\n\t\t!!!!!!  THREAD SimulatorEngine STARTED RUNNING..." << this->currentThread()->objectName().toStdString() << endl;
-    Robot* theOnlyRobot = p_playingArea->getTheOnlyRobot();
-    theOnlyRobot->init();
-    while(1)
-    {
-        theOnlyRobot->displayInfo();
-        theOnlyRobot->step();
-        refreshRobotCoordinates(theOnlyRobot);
-        usleep(STEP_DURATION_MICROSECONDS);
-    }
+    Robot* robot = p_playingArea->getTheOnlyRobot();
+    robot->displayInfo();
+    robot->step();
+    refreshRobotCoordinates(robot);
 }
 
 // Calculates new coordinates of the robot after its STEP action.
