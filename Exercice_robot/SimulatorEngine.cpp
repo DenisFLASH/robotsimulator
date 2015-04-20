@@ -1,5 +1,6 @@
 #include "SimulatorEngine.h"
 #include "Parameters.h"
+#include "MathUtils.h"
 #include <iostream>
 #include <unistd.h>
 #include <cmath>
@@ -29,19 +30,19 @@ PlayingArea* SimulatorEngine::getPlayingArea()
 
 void SimulatorEngine::step()
 {
-    robot->displayInfo();
-    robot->step();
-    refreshRobotCoordinates(robot);
+    p_robot->displayInfo();
+    p_robot->step();
+    refreshRobotCoordinates(p_robot);
 }
 
 Robot *SimulatorEngine::getRobot() const
 {
-    return robot;
+    return p_robot;
 }
 
-void SimulatorEngine::setRobot(Robot *value)
+void SimulatorEngine::setRobot(Robot* value)
 {
-    robot = value;
+    p_robot = value;
 }
 
 
@@ -136,34 +137,5 @@ bool SimulatorEngine::isCollisionBetweenRobotAndFixedObject(Robot* robot, FixedO
     int Bx4 = fixedObject->getXStart() + fixedObject->getWidth();
     int By4 = fixedObject->getYStart() + fixedObject->getHeight();
 
-    return areRectanglesColliding(Ax1,Ay1,Ax2,Ay2,Ax3,Ay3,Ax4,Ay4,Bx1,By1,Bx2,By2,Bx3,By3,Bx4,By4);
-}
-
-
-// 1) Simple test: detect a collision if at least one of the corners of a robot (rectangle A) touches rectangle B.
-// Todo: "dead angle" ==> abstract test of 2 rotated rectangles.
-// Or, simpler: add a test of whether a corner of a fixed object is INSIDE the rotated robot's rectangle.
-bool SimulatorEngine::areRectanglesColliding(int Ax1,int Ay1,int Ax2,int Ay2,int Ax3,int Ay3,int Ax4,int Ay4,int Bx1,int By1,int Bx2,int By2,int Bx3,int By3,int Bx4,int By4)
-{
-    // 1---2
-    // 3---4
-    int BxMin = Bx1;
-    int BxMax = Bx2;
-    int ByMin = By1;
-    int ByMax = By3;
-    if ( isPointInsideRectangle(Ax1,Ay1,BxMin,BxMax,ByMin,ByMax) ||
-         isPointInsideRectangle(Ax2,Ay2,BxMin,BxMax,ByMin,ByMax) ||
-         isPointInsideRectangle(Ax3,Ay3,BxMin,BxMax,ByMin,ByMax) ||
-         isPointInsideRectangle(Ax4,Ay4,BxMin,BxMax,ByMin,ByMax) )
-    {
-        return true;
-    }
-    return false;
-}
-
-// Simple test. We suppose that rectongle is axis-aligned (no rotation).
-// Todo. Test even with a rotated rectangle.
-bool SimulatorEngine::isPointInsideRectangle(int x, int y, int xMin, int xMax, int yMin, int yMax)
-{
-    return ( x >= xMin && x <= xMax && y >= yMin && y <= yMax );
+    return MathUtils::areRectanglesColliding(Ax1,Ay1,Ax2,Ay2,Ax3,Ay3,Ax4,Ay4,Bx1,By1,Bx2,By2,Bx3,By3,Bx4,By4);
 }

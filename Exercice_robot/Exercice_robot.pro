@@ -20,7 +20,8 @@ SOURCES += main.cpp \
     SimulatorEngine.cpp \
     MathUtils.cpp \
     Scene.cpp \
-    react.cpp
+    react.cpp \
+    Vector2d.cpp
 
 HEADERS += \
     Deplacement.h \
@@ -35,5 +36,6 @@ HEADERS += \
     Parameters.h \
     SimulatorEngine.h \
     MathUtils.h \
-    Scene.h
+    Scene.h \
+    Vector2d.h
 

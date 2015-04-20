@@ -47,14 +47,14 @@ void StrategieGlobale::step()
 
     // TOUJOURS AVANCER
     //p_actionMoteur->avancer(1.0); // puissance 1.0 = 100% de la speed_max
-    if (getCompteur() < 80) {
+    if (getCompteur() < 40) {
         p_actionMoteur->avancer(1.0);
-    } else if (getCompteur() < 110) {
-        p_actionMoteur->tournerADroite();
-    } else if (getCompteur() < 120) {
-        p_actionMoteur->reculer(1.0);
-    } else if (getCompteur() < 140) {
+    } else if (getCompteur() < 50) {
         p_actionMoteur->tournerAGauche();
+    } else if (getCompteur() < 100) {
+        p_actionMoteur->avancer(1.0);
+    } else if (getCompteur() < 130) {
+        p_actionMoteur->reculer(1.0);
     } else {
         if (getCompteur() % 4 == 0 )
         {

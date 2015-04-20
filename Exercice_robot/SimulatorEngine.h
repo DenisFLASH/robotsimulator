@@ -16,8 +16,8 @@ public:
     PlayingArea* getPlayingArea();
     //void run();
 
-    Robot *getRobot() const;
-    void setRobot(Robot *value);
+    Robot* getRobot() const;
+    void setRobot(Robot* value);
 
 public slots:
     void step();
@@ -25,15 +25,13 @@ public slots:
 
 private:
     PlayingArea* p_playingArea;
-    Robot* robot;
+    Robot* p_robot;
     QTimer* p_simulatorStepTimer;
 
 private:
     void refreshRobotCoordinates(Robot* robot);
     bool isRobotOutsideTable(Robot* robot);
     bool isCollisionBetweenRobotAndFixedObject(Robot* robot, FixedObject* fixedObject);
-    bool areRectanglesColliding(int Ax1,int Ay1,int Ax2,int Ay2,int Ax3,int Ay3,int Ax4,int Ay4,int Bx1,int By1,int Bx2,int By2,int Bx3,int By3,int Bx4,int By4);
-    bool isPointInsideRectangle(int x, int y, int xMin, int xMax, int yMin, int yMax);
 };
 
 
