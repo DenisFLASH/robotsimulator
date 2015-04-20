@@ -100,9 +100,11 @@ Scene::Scene(): QGraphicsScene()
     claps6->setX(600);
     addItem(claps6);
 
-    //robot
-    Robot *myrobot = new Robot();
-    addItem(myrobot);
+    // exemple robot (Bender)
+    /*Robot *myrobot = new Robot();
+    addItem(myrobot);*/
+
+    //robot-souris
     robot *myrobot2 = new robot();
     addItem(myrobot2);
 }

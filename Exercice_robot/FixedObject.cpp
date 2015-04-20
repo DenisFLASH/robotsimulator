@@ -15,8 +15,6 @@ FixedObject::FixedObject(string name, GlobalColor color, int xStart, int yStart,
     m_width = width;
     m_heigth = height;
     m_relief = relief;
-    //setRect(m_xStart, m_yStart, m_width, m_heigth);
-    //setBrush(QBrush(m_color));
     cout << "FixedObject created..." << endl;
 }
 

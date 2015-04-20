@@ -6,6 +6,16 @@
 using namespace std;
 
 
+
+int StrategieGlobale::getCompteur() const
+{
+    return Compteur;
+}
+
+void StrategieGlobale::setCompteur(int value)
+{
+    Compteur = value;
+}
 StrategieGlobale::StrategieGlobale()
 {
     /*Deplacement* deplacement = new Deplacement();
@@ -15,6 +25,7 @@ StrategieGlobale::StrategieGlobale()
     bindServiceActionMoteur(deplacement);
     bindServiceActionBras(pince);
     bindServiceCapteur(capteur);*/
+    Compteur = 1;
 
     cout << "StrategieGlobale created..." << endl;
 }
@@ -35,9 +46,25 @@ void StrategieGlobale::step()
 
 
     // TOUJOURS AVANCER
-    p_actionMoteur->avancer(1.0); // puissance 1.0 = 100% de la speed_max
+    //p_actionMoteur->avancer(1.0); // puissance 1.0 = 100% de la speed_max
+    if (getCompteur() < 80) {
+        p_actionMoteur->avancer(1.0);
+    } else if (getCompteur() < 110) {
+        p_actionMoteur->tournerADroite();
+    } else if (getCompteur() < 120) {
+        p_actionMoteur->reculer(1.0);
+    } else if (getCompteur() < 140) {
+        p_actionMoteur->tournerAGauche();
+    } else {
+        if (getCompteur() % 4 == 0 )
+        {
+            p_actionMoteur->tournerADroite();
+        } else {
+            p_actionMoteur->avancer(1.0);
+        }
+    }
 
-
+    setCompteur(getCompteur() + 1);
     /*
     p_capteur->refreshAllDetectors();
     p_actionMoteur->arreterMoteur();

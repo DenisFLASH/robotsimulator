@@ -2,8 +2,9 @@
 #include <QGraphicsScene>
 #include <QPainter>
 #include <QStyleOption>
-
+#include <iostream>
 #include <math.h>
+using namespace std;
 
 static const double Pi = 3.14159265358979323846264338327950288419717;
 static double TwoPi = 2.0 * Pi;
@@ -34,21 +35,21 @@ robot::~robot()
 QRectF robot::boundingRect() const
 {
     qreal adjust = 0.5;
-    return QRectF(-18 - adjust, -22 - adjust,
-                  36 + adjust, 60 + adjust);
+    return QRectF(-18 - adjust, -22 - adjust, 36 + adjust, 60 + adjust);
+    //return QRectF(38 - adjust, 62 - adjust, 176 + adjust, 200 + adjust);
 }
-
+/*
 QPainterPath robot::shape() const
 {
     QPainterPath path;
     path.addRect(-10, -20, 20, 40);
     return path;
 }
-
+*/
 void robot::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
+    cout << "robot.paint()" << endl;
     // Body
-
     painter->setBrush(scene()->collidingItems(this).isEmpty() ? Qt::darkYellow : Qt::red);
     painter->drawEllipse(-10, -20, 20, 40);
     //painter->drawImage(0,0,image);

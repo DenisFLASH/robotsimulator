@@ -13,10 +13,15 @@ public:
     void bindPlayingArea(PlayingArea* area);
     void initDrawFixedObjects();
     void initDrawRobot();
+    Robot *getP_sceneRobot() const;
+    void setP_sceneRobot(Robot *value);
+
+public slots:
+    void advance();
 
 private:
     PlayingArea* p_playingArea;
-    void scaleCoordinatesOfRectangle(int x, int y, int w, int h, int* xScaled, int* yScaled, int* widthScaled, int* heightScaled);
+    Robot* p_sceneRobot;
 
 public slots:
     void redrawScene();

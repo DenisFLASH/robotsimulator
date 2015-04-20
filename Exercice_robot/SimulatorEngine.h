@@ -11,9 +11,13 @@ class SimulatorEngine : public QObject
 public:
     SimulatorEngine();
     ~SimulatorEngine();
+
     void bindPlayingArea(PlayingArea* area);
     PlayingArea* getPlayingArea();
     //void run();
+
+    Robot *getRobot() const;
+    void setRobot(Robot *value);
 
 public slots:
     void step();
@@ -21,6 +25,7 @@ public slots:
 
 private:
     PlayingArea* p_playingArea;
+    Robot* robot;
     QTimer* p_simulatorStepTimer;
 
 private:

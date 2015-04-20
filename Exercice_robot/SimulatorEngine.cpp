@@ -19,6 +19,7 @@ SimulatorEngine::~SimulatorEngine()
 void SimulatorEngine::bindPlayingArea(PlayingArea* area)
 {
     p_playingArea = area;
+    setRobot(p_playingArea->getTheOnlyRobot());
 }
 
 PlayingArea* SimulatorEngine::getPlayingArea()
@@ -28,11 +29,23 @@ PlayingArea* SimulatorEngine::getPlayingArea()
 
 void SimulatorEngine::step()
 {
-    Robot* robot = p_playingArea->getTheOnlyRobot();
     robot->displayInfo();
     robot->step();
     refreshRobotCoordinates(robot);
 }
+
+Robot *SimulatorEngine::getRobot() const
+{
+    return robot;
+}
+
+void SimulatorEngine::setRobot(Robot *value)
+{
+    robot = value;
+}
+
+
+
 
 // Calculates new coordinates of the robot after its STEP action.
 // Interaction with table borders and fixed objects taken into account.
@@ -40,14 +53,16 @@ void SimulatorEngine::refreshRobotCoordinates(Robot* robot)
 {
     int xOld = robot->getX();
     int yOld = robot->getY();
-    double speed = robot->getSpeed();
-    double heading = robot->getHeading();
+    double headingOld = robot->getHeading();
 
-    // Changes the coordinates anyway
-    int xNew = xOld + speed * cos(heading);
-    int yNew = yOld - speed * sin(heading);
+    // Changes the coordinates anyway (center and corners)
+    int xNew = xOld + robot->getSpeed() * cos(headingOld);
+    int yNew = yOld - robot->getSpeed() * sin(headingOld);
+    double headingNew = headingOld + robot->getTurnSpeed();
     robot->setX(xNew);
     robot->setY(yNew);
+    robot->setHeading(headingNew);
+    robot->updateCornersCoordinates();
 
     // If the move is impossible, "rollback" to the old coordinates
     if (isRobotOutsideTable(robot))
@@ -55,6 +70,8 @@ void SimulatorEngine::refreshRobotCoordinates(Robot* robot)
         cout << "!!! Impossible to move outside of the table." << endl;
         robot->setX(xOld);
         robot->setY(yOld);
+        robot->setHeading(headingOld);
+        robot->updateCornersCoordinates();
     }
 
     for (unsigned int i = 0; i < p_playingArea->getAllFixedObjects().size(); i++)
@@ -65,12 +82,12 @@ void SimulatorEngine::refreshRobotCoordinates(Robot* robot)
             cout << "!!! Collision between robot and " << fixedObject->getName() << endl;
             robot->setX(xOld);
             robot->setY(yOld);
+            robot->setHeading(headingOld);
+            robot->updateCornersCoordinates();
         }
     }
 
-    // Know when we know if the robot changed his center's coordinates or not,
-    // we can update the coordinates of its center.
-    robot->updateCornersCoordinates();
+
 }
 
 

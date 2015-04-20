@@ -17,7 +17,7 @@ int main(int argc, char** argv)
 
 
     Robot* ryad = new Robot("Ryad", TEAM_A_MAIN_ROBOT_INIT_X, TEAM_A_MAIN_ROBOT_INIT_Y,
-                            TEAM_A_MAIN_ROBOT_LENGTH, TEAM_A_MAIN_ROBOT_WIDTH, NORTH);
+                            TEAM_A_MAIN_ROBOT_LENGTH, TEAM_A_MAIN_ROBOT_WIDTH, EAST);
     StrategieGlobale* brain = new StrategieGlobale();
     ryad->bindServiceInitialisation(brain);
     ryad->bindServicePasAPas(brain);
@@ -34,17 +34,17 @@ int main(int argc, char** argv)
 
     QTimer timer;
     QObject::connect(&timer, SIGNAL(timeout()), engine, SLOT(step()));
-    timer.start(1000);
+    timer.start(STEP_DURATION_MILLISECONDS);
 
 
     // GUI
     Scene* scene = new Scene();
     scene->bindPlayingArea(area);
     scene->initDrawFixedObjects();
-    scene->initDrawRobot();
+    //scene->initDrawRobot();
     QGraphicsView view(scene);
     QTimer ihmTimer;
-    QObject::connect(&ihmTimer, SIGNAL(timeout()), scene, SLOT(redrawScene()));
+    QObject::connect(&ihmTimer, SIGNAL(timeout()), scene, SLOT(advance()));
     view.show();
     ihmTimer.start(100);
 

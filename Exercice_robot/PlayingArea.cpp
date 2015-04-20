@@ -53,6 +53,13 @@ void PlayingArea::createFixedWorld()
     FixedObject* escalierABordureDerriere = new FixedObject("escalierABordureDerriere", black, 989,0,500,22,110);
     FixedObject* escalierBBordureDerriere = new FixedObject("escalierBBordureDerriere", black, 1511,0,500,22,110);//989+500+22
 
+    FixedObject* claps1 = new FixedObject("claps1", yellow, 250,2000,160,30,108);
+    FixedObject* claps2 = new FixedObject("claps2", green, 540,2000,160,30,108);
+    FixedObject* claps3 = new FixedObject("claps3", yellow, 870,2000,160,30,108);
+    FixedObject* claps4 = new FixedObject("claps4", green, 2000,2000,160,30,108);
+    FixedObject* claps5 = new FixedObject("claps5", yellow, 2300,2000,160,30,108);
+    FixedObject* claps6 = new FixedObject("claps6", green, 2600,2000,160,30,108);
+
     p_allFixedObjects.push_back(zoneATasseauHorizontal1);
     p_allFixedObjects.push_back(zoneATasseauHorizontal2);
     p_allFixedObjects.push_back(zoneATasseauVertical1);
@@ -77,6 +84,12 @@ void PlayingArea::createFixedWorld()
     p_allFixedObjects.push_back(escalierBordureDroite);
     p_allFixedObjects.push_back(escalierABordureDerriere);
     p_allFixedObjects.push_back(escalierBBordureDerriere);
+    p_allFixedObjects.push_back(claps1);
+    p_allFixedObjects.push_back(claps2);
+    p_allFixedObjects.push_back(claps3);
+    p_allFixedObjects.push_back(claps4);
+    p_allFixedObjects.push_back(claps5);
+    p_allFixedObjects.push_back(claps6);
 }
 
 int PlayingArea::getWidth()

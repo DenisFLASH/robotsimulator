@@ -16,6 +16,7 @@ private:
     ServiceActionMoteur* p_actionMoteur;
     ServiceActionPince* p_actionPince;
     ServiceCapteur* p_capteur;
+    int Compteur;
 
 public:
     StrategieGlobale();
@@ -25,6 +26,8 @@ public:
     void bindServiceActionMoteur(ServiceActionMoteur* service);
     void bindServiceActionPince(ServiceActionPince* service);
     void bindServiceCapteur(ServiceCapteur* service);
+    int getCompteur() const;
+    void setCompteur(int value);
 };
 
 

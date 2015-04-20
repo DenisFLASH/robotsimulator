@@ -19,7 +19,8 @@ SOURCES += main.cpp \
     FixedObject.cpp \
     SimulatorEngine.cpp \
     MathUtils.cpp \
-    Scene.cpp
+    Scene.cpp \
+    react.cpp
 
 HEADERS += \
     Deplacement.h \

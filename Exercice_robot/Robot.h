@@ -1,7 +1,7 @@
 #ifndef ROBOT_H
 #define ROBOT_H
 
-#include <QGraphicsRectItem>
+#include <QGraphicsItem>
 #include "ston.h"
 #include <string>
 using namespace std;
@@ -20,9 +20,8 @@ private:
         m_width;
     double m_XNW, m_YNW, m_XNE, m_YNE, m_XSW, m_YSW, m_XSE, m_YSE;
     double m_speed,
-           m_acceleration,
-           m_heading,
-           m_stepTurnAngle;
+           m_turnSpeed,
+           m_heading;
     double distanceToCorner, // r
            angleToCorner;    // beta
     string m_name;
@@ -35,12 +34,12 @@ public:
     virtual ~Robot();
 
     // Methods of QGraphicsItem ////////////////////////////////////////////////////////////
-    void advance(int phase);
+    //void advance(int phase);
     QRectF boundingRect() const;
-    QPainterPath shape() const;
+    //QPainterPath shape() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+    void advance(int step);
     // /////////////////////////////////////////////////////////////////////////////////////
-
 
     // Binding with StrategieGlobale ////////////////////////////////////////////
     void bindServiceInitialisation(ServiceInitialisation* serviceInitialisation);
@@ -51,6 +50,7 @@ public:
 
 
     // Setters, getters //////////
+    qreal robotEyeDirection;
     int getX();
     void setX(int x);
     int getY();
@@ -59,8 +59,9 @@ public:
     int getWidth();
     double getSpeed();
     void setSpeed(double speed);
-    double getAcceleration();
+    double getTurnSpeed();
     double getHeading();
+    void setHeading(double heading);
     string getName();    
     double getXNW();
     double getYNW();
@@ -75,11 +76,11 @@ public:
     // /////////////////////////////
 
     // ServiceActionMoteur
-    void avancer(double puissance); // move()
-    void reculer(double puissance); // moveBack()
+    void avancer(double puissance);
+    void reculer(double puissance);
     void arreterMoteur();
-    void tournerAGauche(); // stepTurnLeft()
-    void tournerADroite(); // stepTurnRight()
+    void tournerAGauche();
+    void tournerADroite();
 
     // ServiceActionPince
     // todo
