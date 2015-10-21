@@ -1,0 +1,4 @@
+#ifndef MOBILEOBJECT_H
+#define MOBILEOBJECT_H
+
+#endif // MOBILEOBJECT_H
